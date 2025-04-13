@@ -1,0 +1,699 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.1)
+
+2025-04-08T03:39:42.102Z  INFO 3832 --- [           main] com.payment.ms.PaymentMsApplication      : Starting PaymentMsApplication v0.0.1-SNAPSHOT using Java 17.0.14 with PID 3832 (/home/ubuntu/payment-ms/target/payment-ms-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/payment-ms/target)
+2025-04-08T03:39:42.108Z  INFO 3832 --- [           main] com.payment.ms.PaymentMsApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-04-08T03:39:43.858Z  INFO 3832 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-08T03:39:43.993Z  INFO 3832 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 1 JPA repository interfaces.
+2025-04-08T03:39:45.665Z  INFO 3832 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2025-04-08T03:39:45.692Z  INFO 3832 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-08T03:39:45.693Z  INFO 3832 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.10]
+2025-04-08T03:39:45.986Z  INFO 3832 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-08T03:39:45.991Z  INFO 3832 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3752 ms
+2025-04-08T03:39:46.081Z  INFO 3832 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-08T03:39:46.614Z  INFO 3832 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:paymentsdb user=SA
+2025-04-08T03:39:46.619Z  INFO 3832 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-08T03:39:46.653Z  INFO 3832 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:paymentsdb'
+2025-04-08T03:39:47.510Z  INFO 3832 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-08T03:39:47.684Z  INFO 3832 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.5.Final
+2025-04-08T03:39:47.690Z  INFO 3832 --- [           main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-04-08T03:39:48.074Z  INFO 3832 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-08T03:39:48.436Z  INFO 3832 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-08T03:39:48.935Z  INFO 3832 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2025-04-08T03:39:50.169Z  INFO 3832 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-08T03:39:50.251Z  INFO 3832 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-08T03:39:51.195Z  WARN 3832 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-08T03:39:52.397Z  INFO 3832 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2025-04-08T03:39:52.537Z  INFO 3832 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [3.233.140.151:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-payments-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = payments-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2025-04-08T03:39:53.008Z  INFO 3832 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.4.1
+2025-04-08T03:39:53.008Z  INFO 3832 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8a516edc2755df89
+2025-04-08T03:39:53.009Z  INFO 3832 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1744083593005
+2025-04-08T03:39:53.022Z  INFO 3832 --- [           main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Subscribed to topic(s): reversed-payments
+2025-04-08T03:39:53.047Z  INFO 3832 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [3.233.140.151:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-orders-group-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = orders-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2025-04-08T03:39:53.071Z  INFO 3832 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.4.1
+2025-04-08T03:39:53.072Z  INFO 3832 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8a516edc2755df89
+2025-04-08T03:39:53.072Z  INFO 3832 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1744083593071
+2025-04-08T03:39:53.072Z  INFO 3832 --- [           main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Subscribed to topic(s): new-orders
+2025-04-08T03:39:53.102Z  INFO 3832 --- [           main] com.payment.ms.PaymentMsApplication      : Started PaymentMsApplication in 11.991 seconds (process running for 13.386)
+2025-04-08T03:40:02.263Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 9152 ms.
+2025-04-08T03:40:02.269Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:40:02.538Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 9447 ms.
+2025-04-08T03:40:02.540Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:40:20.620Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 17946 ms.
+2025-04-08T03:40:20.620Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:40:24.090Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 21680 ms.
+2025-04-08T03:40:24.092Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:40:54.994Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 30746 ms.
+2025-04-08T03:40:54.995Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:40:56.581Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 35789 ms.
+2025-04-08T03:40:56.581Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:41:27.257Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 31967 ms.
+2025-04-08T03:41:27.258Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:41:31.781Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 34976 ms.
+2025-04-08T03:41:31.782Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:41:55.756Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 28096 ms.
+2025-04-08T03:41:55.756Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:42:00.883Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 28715 ms.
+2025-04-08T03:42:00.885Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:42:26.715Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 29984 ms.
+2025-04-08T03:42:26.716Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:42:32.592Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 30987 ms.
+2025-04-08T03:42:32.593Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:43:00.114Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 32432 ms.
+2025-04-08T03:43:00.114Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:43:05.784Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 32013 ms.
+2025-04-08T03:43:05.784Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:43:30.571Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 29429 ms.
+2025-04-08T03:43:30.572Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:43:38.879Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 31945 ms.
+2025-04-08T03:43:38.879Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:44:04.721Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 33045 ms.
+2025-04-08T03:44:04.721Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:44:13.230Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 33352 ms.
+2025-04-08T03:44:13.231Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:44:39.774Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 33998 ms.
+2025-04-08T03:44:39.774Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:44:40.943Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 26497 ms.
+2025-04-08T03:44:40.943Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:45:07.437Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 26646 ms.
+2025-04-08T03:45:07.437Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:45:16.846Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 34661 ms.
+2025-04-08T03:45:16.848Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:45:40.083Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 31777 ms.
+2025-04-08T03:45:40.083Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:45:53.590Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 35860 ms.
+2025-04-08T03:45:53.591Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:46:05.637Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 24637 ms.
+2025-04-08T03:46:05.638Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:46:22.004Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 27210 ms.
+2025-04-08T03:46:22.004Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:46:34.936Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 28077 ms.
+2025-04-08T03:46:34.936Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:46:58.342Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 35403 ms.
+2025-04-08T03:46:58.342Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:47:03.633Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 27659 ms.
+2025-04-08T03:47:03.634Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:47:25.902Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 26396 ms.
+2025-04-08T03:47:25.902Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:47:34.993Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 30113 ms.
+2025-04-08T03:47:34.994Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:48:01.759Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 34917 ms.
+2025-04-08T03:48:01.760Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:48:07.408Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 31341 ms.
+2025-04-08T03:48:07.408Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:48:37.671Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 34885 ms.
+2025-04-08T03:48:37.672Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:48:41.660Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 33179 ms.
+2025-04-08T03:48:41.660Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:49:06.064Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 27257 ms.
+2025-04-08T03:49:06.064Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:49:16.461Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 33630 ms.
+2025-04-08T03:49:16.462Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:49:39.561Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 32308 ms.
+2025-04-08T03:49:39.561Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:49:51.214Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 33844 ms.
+2025-04-08T03:49:51.214Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:50:09.210Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 28573 ms.
+2025-04-08T03:50:09.210Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:50:21.866Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 29457 ms.
+2025-04-08T03:50:21.866Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:50:41.970Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 31934 ms.
+2025-04-08T03:50:41.971Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:50:57.172Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 34063 ms.
+2025-04-08T03:50:57.172Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:51:09.714Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 26628 ms.
+2025-04-08T03:51:09.714Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:51:29.717Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 31346 ms.
+2025-04-08T03:51:29.717Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:51:37.630Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 26953 ms.
+2025-04-08T03:51:37.630Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:52:01.325Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 30747 ms.
+2025-04-08T03:52:01.325Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:52:09.919Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 31180 ms.
+2025-04-08T03:52:09.920Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:52:29.720Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 27272 ms.
+2025-04-08T03:52:29.721Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:52:41.126Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 30186 ms.
+2025-04-08T03:52:41.127Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:52:55.772Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 25161 ms.
+2025-04-08T03:52:55.773Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:53:11.076Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 28745 ms.
+2025-04-08T03:53:11.077Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:53:25.629Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 28969 ms.
+2025-04-08T03:53:25.629Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:53:41.579Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 29454 ms.
+2025-04-08T03:53:41.579Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:53:50.827Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 24098 ms.
+2025-04-08T03:53:50.827Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:54:17.984Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 35421 ms.
+2025-04-08T03:54:17.984Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:54:25.930Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 34139 ms.
+2025-04-08T03:54:25.930Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:54:45.429Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 26263 ms.
+2025-04-08T03:54:45.429Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:55:01.737Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 34630 ms.
+2025-04-08T03:55:01.737Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:55:11.134Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 24827 ms.
+2025-04-08T03:55:11.134Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:55:28.322Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 25501 ms.
+2025-04-08T03:55:28.323Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:55:40.333Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 28030 ms.
+2025-04-08T03:55:40.333Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:55:54.432Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 25008 ms.
+2025-04-08T03:55:54.433Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:14.533Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 33181 ms.
+2025-04-08T03:56:14.533Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:18.608Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:18.608Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:18.608Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:19.613Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:19.613Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:19.613Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:20.821Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:20.821Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:20.821Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:21.680Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:21.680Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:21.683Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:22.840Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:22.841Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:22.841Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:23.682Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:23.682Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:23.683Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:24.788Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:24.788Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:24.788Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:25.942Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:25.943Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:25.943Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:26.996Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:26.996Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:26.996Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:27.899Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:27.899Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:27.899Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:28.049Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Disconnecting from node -1 due to socket connection setup timeout. The timeout value is 32456 ms.
+2025-04-08T03:56:28.049Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:28.932Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:28.933Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:28.933Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:29.137Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:29.137Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:29.137Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:30.037Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:30.037Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:30.037Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:30.091Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:30.091Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:30.091Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:31.045Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:31.045Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:31.045Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:31.191Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:31.191Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:31.191Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:32.249Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:32.250Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:32.250Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:32.347Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:32.348Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:32.348Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:33.230Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:33.230Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:33.230Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:33.531Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:33.532Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:33.532Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:34.236Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:34.237Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:34.237Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:34.585Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:34.585Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:34.586Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:35.392Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:35.392Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:35.392Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:35.539Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:35.540Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:35.540Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:36.247Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:36.247Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:36.247Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:36.744Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:36.744Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:36.744Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:37.101Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:37.102Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:37.102Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:37.799Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:37.799Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:37.799Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:38.180Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:38.181Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:38.181Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:38.731Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:38.732Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:38.732Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:39.235Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:39.236Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:39.237Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:39.636Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:39.637Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:39.637Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:40.190Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:40.190Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:40.190Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:40.491Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:40.491Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:40.491Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:40.995Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:40.995Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:40.995Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:41.597Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:41.597Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:41.598Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:41.850Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:41.850Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:41.850Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:42.553Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:42.553Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:42.553Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:42.803Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:42.803Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:42.803Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:43.532Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:43.532Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:43.532Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:43.784Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:43.784Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:43.784Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:44.439Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:44.439Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:44.439Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:44.991Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:44.991Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:44.991Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:45.343Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:45.343Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:45.343Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:45.847Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:45.847Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:45.847Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:46.551Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:46.551Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:46.551Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:46.951Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:46.952Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:46.952Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:47.405Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:47.405Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:47.405Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:48.006Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:48.006Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:48.006Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:48.431Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:48.432Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:48.432Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:49.135Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:49.135Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:49.135Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:49.636Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:49.637Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:49.637Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:50.039Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:50.039Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:50.039Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:50.491Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:50.491Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:50.491Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:51.044Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:51.044Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:51.044Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:51.609Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:51.609Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:51.609Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:52.212Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:52.212Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:52.212Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:52.563Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:52.563Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:52.563Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:53.331Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:53.332Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:53.332Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:53.432Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:53.432Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:53.432Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:54.487Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:54.487Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:54.488Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:54.537Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:54.537Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:54.537Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:55.443Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Node -1 disconnected.
+2025-04-08T03:56:55.443Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:55.443Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:55.592Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Node -1 disconnected.
+2025-04-08T03:56:55.592Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Connection to node -1 (/3.233.140.151:9092) could not be established. Broker may not be available.
+2025-04-08T03:56:55.592Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Bootstrap broker 3.233.140.151:9092 (id: -1 rack: null) disconnected
+2025-04-08T03:56:56.810Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Error while fetching metadata with correlation id 42 : {new-orders=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:56.813Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Error while fetching metadata with correlation id 45 : {reversed-payments=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:56.816Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Cluster ID: dnQAmpk3T8KyiwBJ6lPmBQ
+2025-04-08T03:56:56.817Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Cluster ID: dnQAmpk3T8KyiwBJ6lPmBQ
+2025-04-08T03:56:56.921Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Error while fetching metadata with correlation id 48 : {reversed-payments=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:56.923Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Error while fetching metadata with correlation id 45 : {new-orders=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:57.061Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Error while fetching metadata with correlation id 47 : {new-orders=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:57.062Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Error while fetching metadata with correlation id 50 : {reversed-payments=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:57.168Z  WARN 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Error while fetching metadata with correlation id 49 : {new-orders=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:57.170Z  WARN 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Error while fetching metadata with correlation id 52 : {reversed-payments=LEADER_NOT_AVAILABLE}
+2025-04-08T03:56:57.276Z  INFO 3832 --- [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Resetting the last seen epoch of partition new-orders-0 to 0 since the associated topicId changed from null to kWXTTkxqTBmsUG_-tXICAA
+2025-04-08T03:56:57.278Z  INFO 3832 --- [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Resetting the last seen epoch of partition reversed-payments-0 to 0 since the associated topicId changed from null to S4bkgru3RQ-t-S7l_hBs_A
+2025-04-08T03:56:58.184Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Discovered group coordinator 3.233.140.151:9092 (id: 2147483647 rack: null)
+2025-04-08T03:56:58.190Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] (Re-)joining group
+2025-04-08T03:56:58.227Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Discovered group coordinator 3.233.140.151:9092 (id: 2147483647 rack: null)
+2025-04-08T03:56:58.232Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] (Re-)joining group
+2025-04-08T03:56:58.259Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Request joining group due to: need to re-join with the given member-id: consumer-payments-group-1-b9ce45a9-d925-4e2e-832a-71d357102417
+2025-04-08T03:56:58.260Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2025-04-08T03:56:58.260Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] (Re-)joining group
+2025-04-08T03:56:58.262Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Request joining group due to: need to re-join with the given member-id: consumer-orders-group-2-6b8666a8-efc8-4d54-af9b-78be030bb930
+2025-04-08T03:56:58.262Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2025-04-08T03:56:58.262Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] (Re-)joining group
+2025-04-08T03:56:58.290Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Successfully joined group with generation Generation{generationId=1, memberId='consumer-payments-group-1-b9ce45a9-d925-4e2e-832a-71d357102417', protocol='range'}
+2025-04-08T03:56:58.297Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Finished assignment for group at generation 1: {consumer-payments-group-1-b9ce45a9-d925-4e2e-832a-71d357102417=Assignment(partitions=[reversed-payments-0])}
+2025-04-08T03:56:58.298Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Successfully joined group with generation Generation{generationId=1, memberId='consumer-orders-group-2-6b8666a8-efc8-4d54-af9b-78be030bb930', protocol='range'}
+2025-04-08T03:56:58.373Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Successfully synced group in generation Generation{generationId=1, memberId='consumer-payments-group-1-b9ce45a9-d925-4e2e-832a-71d357102417', protocol='range'}
+2025-04-08T03:56:58.374Z  INFO 3832 --- [ | orders-group] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Successfully synced group in generation Generation{generationId=1, memberId='consumer-orders-group-2-6b8666a8-efc8-4d54-af9b-78be030bb930', protocol='range'}
+2025-04-08T03:56:58.377Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Notifying assignor about the new Assignment(partitions=[new-orders-0])
+2025-04-08T03:56:58.381Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Notifying assignor about the new Assignment(partitions=[reversed-payments-0])
+2025-04-08T03:56:58.390Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Adding newly assigned partitions: new-orders-0
+2025-04-08T03:56:58.392Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Adding newly assigned partitions: reversed-payments-0
+2025-04-08T03:56:58.409Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Found no committed offset for partition new-orders-0
+2025-04-08T03:56:58.411Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Found no committed offset for partition reversed-payments-0
+2025-04-08T03:56:58.430Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Found no committed offset for partition reversed-payments-0
+2025-04-08T03:56:58.438Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Found no committed offset for partition new-orders-0
+2025-04-08T03:56:58.465Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Resetting offset for partition new-orders-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[3.233.140.151:9092 (id: 0 rack: null)], epoch=0}}.
+2025-04-08T03:56:58.466Z  INFO 3832 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.SubscriptionState    : [Consumer clientId=consumer-payments-group-1, groupId=payments-group] Resetting offset for partition reversed-payments-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[3.233.140.151:9092 (id: 0 rack: null)], epoch=0}}.
+2025-04-08T03:56:58.491Z  INFO 3832 --- [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : orders-group: partitions assigned: [new-orders-0]
+2025-04-08T03:56:58.492Z  INFO 3832 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : payments-group: partitions assigned: [reversed-payments-0]
+2025-04-08T03:57:01.302Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Request joining group due to: group is already rebalancing
+2025-04-08T03:57:01.302Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Revoke previously assigned partitions new-orders-0
+2025-04-08T03:57:01.305Z  INFO 3832 --- [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : orders-group: partitions revoked: [new-orders-0]
+2025-04-08T03:57:01.305Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] (Re-)joining group
+2025-04-08T03:57:01.314Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Successfully joined group with generation Generation{generationId=2, memberId='consumer-orders-group-2-6b8666a8-efc8-4d54-af9b-78be030bb930', protocol='range'}
+2025-04-08T03:57:01.630Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Successfully synced group in generation Generation{generationId=2, memberId='consumer-orders-group-2-6b8666a8-efc8-4d54-af9b-78be030bb930', protocol='range'}
+2025-04-08T03:57:01.631Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Notifying assignor about the new Assignment(partitions=[new-orders-0])
+2025-04-08T03:57:01.631Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Adding newly assigned partitions: new-orders-0
+2025-04-08T03:57:01.635Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-orders-group-2, groupId=orders-group] Setting offset for partition new-orders-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[3.233.140.151:9092 (id: 0 rack: null)], epoch=0}}
+2025-04-08T03:57:01.636Z  INFO 3832 --- [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : orders-group: partitions assigned: [new-orders-0]
+Recieved event for payment {"type":"ORDER_CREATED","order":{"item":"","quantity":3,"amount":67.2,"paymentMode":null,"orderId":1,"address":null}}
+2025-04-08T03:57:42.250Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [3.233.140.151:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2025-04-08T03:57:42.292Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=producer-1] Instantiated an idempotent producer.
+2025-04-08T03:57:42.328Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.4.1
+2025-04-08T03:57:42.328Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8a516edc2755df89
+2025-04-08T03:57:42.328Z  INFO 3832 --- [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1744084662328
+2025-04-08T03:57:42.358Z  WARN 3832 --- [ad | producer-1] org.apache.kafka.clients.NetworkClient   : [Producer clientId=producer-1] Error while fetching metadata with correlation id 1 : {new-payments=LEADER_NOT_AVAILABLE}
+2025-04-08T03:57:42.358Z  INFO 3832 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: dnQAmpk3T8KyiwBJ6lPmBQ
+2025-04-08T03:57:42.358Z  INFO 3832 --- [ad | producer-1] o.a.k.c.p.internals.TransactionManager   : [Producer clientId=producer-1] ProducerId set to 2 with epoch 0
+2025-04-08T03:57:42.466Z  INFO 3832 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition new-payments-0 to 0 since the associated topicId changed from null to _kRUHcPnS8-5TYwe4y3yuA
